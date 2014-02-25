@@ -1,19 +1,18 @@
-import template.library.*;
+import gameover.utils.*;
 
-HelloLibrary hello;
+Toolbox tb;
 
 void setup() {
   size(400,400);
-  smooth();
-  
-  hello = new HelloLibrary(this);
-  
-  PFont font = createFont("",40);
-  textFont(font);
+  tb = new Toolbox(this);
+  tb.addButton("meow", "https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif", 40, 40);
+}
+
+void meow(Toolbox.Button button) {
+  println("MEOW");
+  exit();
 }
 
 void draw() {
-  background(0);
-  fill(255);
-  text(hello.sayHello(), 40, 200);
+  background(255);
 }
