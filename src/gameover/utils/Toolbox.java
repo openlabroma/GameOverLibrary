@@ -80,14 +80,14 @@ public class Toolbox {
 
 	private void update() {
 		if (mousePressed) {
+			mousePressed = false;
 			for (Button b : buttons) {
 				if (b.isInside(mousePosition)) {
 					executeCommand(b.getCommand(), b);
-					mousePressed = false;
 					return;
 				}
 			}
-			mousePressed = false;
+			
 		}
 	}
 
@@ -167,6 +167,7 @@ public class Toolbox {
 		public boolean active = true;
 		private int halfWidth;
 		private int halfHeight;
+		public boolean isCircular = false;
 
 		public Button(String _command, String imageFilename, float x, float y) {
 			this(_command, imageFilename, new PVector(x, y));
@@ -204,8 +205,11 @@ public class Toolbox {
 
 			// TODO better isInside function using color picking with an
 			// offscreen buffer
-			return (PApplet.abs(position.x - p.x) < halfWidth && PApplet
-					.abs(position.y - p.y) < halfHeight);
+			if (!isCircular)
+				return (PApplet.abs(position.x - p.x) < halfWidth && PApplet
+						.abs(position.y - p.y) < halfHeight);
+			else
+				return (PVector.dist(p, position) < halfWidth);
 		}
 	}
 
