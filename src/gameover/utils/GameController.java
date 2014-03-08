@@ -54,7 +54,7 @@ public class GameController {
 			addCommand("pad");
 		}
 	}
-	
+
 	public int getPadsNumber() {
 		if (controllers != null)
 			return controllers.length;
@@ -71,7 +71,7 @@ public class GameController {
 			boolean... buttons) {
 		// PApplet.println(parent.millis() + " - " + padID + ":" + position +
 		// " | " + directions + " buttons: " + buttons);
-		int currentDirection = NONE ;
+		int currentDirection = NONE;
 		if (directions[PAD_LEFT] && directions[PAD_UP]) {
 			currentDirection = PAD_UP_LEFT;
 		} else if (directions[PAD_LEFT] && directions[PAD_DOWN]) {
@@ -80,13 +80,13 @@ public class GameController {
 			currentDirection = PAD_UP_RIGHT;
 		} else if (directions[PAD_RIGHT] && directions[PAD_DOWN]) {
 			currentDirection = PAD_DOWN_RIGHT;
-		} else  if (directions[PAD_RIGHT]) {
+		} else if (directions[PAD_RIGHT]) {
 			currentDirection = PAD_RIGHT;
-		} else  if (directions[PAD_LEFT]) {
+		} else if (directions[PAD_LEFT]) {
 			currentDirection = PAD_LEFT;
-		} else  if (directions[PAD_DOWN]) {
+		} else if (directions[PAD_DOWN]) {
 			currentDirection = PAD_DOWN;
-		} else  if (directions[PAD_UP]) {
+		} else if (directions[PAD_UP]) {
 			currentDirection = PAD_UP;
 		}
 
@@ -115,9 +115,9 @@ public class GameController {
 			PApplet.println("Please implement a " + e.getMessage()
 					+ " method in your main sketch");
 		}
-		commands.put(command, commandMethod);
+		if (commandMethod != null)
+			commands.put(command, commandMethod);
 	}
-
 
 	public static final int PAD_LEFT = 0;
 	public static final int PAD_RIGHT = 1;
